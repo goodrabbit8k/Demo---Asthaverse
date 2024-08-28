@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float moveSpeed;
 
+    //untuk kecepatan peluru
     void Start()
     {
         moveSpeed = 10f;
