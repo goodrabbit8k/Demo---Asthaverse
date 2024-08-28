@@ -5,10 +5,9 @@ using UnityEngine.InputSystem;
 
 //kelas untuk player action seperti attacking, scope, dan Silent kill
 
-public class PlayerAction : MonoBehaviour
+public class PlayerAction : ExecuteLogic
 {
     private PlayerActionInput inputActions;
-    private bool isShooting = false;
 
     //supaya input action bisa digunakan
     private void Awake()
@@ -19,18 +18,18 @@ public class PlayerAction : MonoBehaviour
 
     private void Start()
     {
+        //membuat event untuk menjalankan 'Shoot'
         inputActions.InputPlayerAction.Shooting.performed += Shooting_Performed;
     }
 
+    //event ketika 'Shoot' dilakukan
     private void Shooting_Performed(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            Debug.Log("Shoot");
+            Shoot();
         }
         
-    }
-
-    //untuk parsing value float ketika memencet tombol Shoot (T-T value nya float dia)
+    }    
     
 }
