@@ -158,7 +158,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.Demo---Ashtaverse
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -766,8 +767,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Demo - Ashtaverse
-  metroPackageVersion: 
+  metroPackageName: Demo-Ashtaverse
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -775,7 +776,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Demo - Ashtaverse
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Demo - Ashtaverse
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -840,7 +841,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: 20f16835-0ce4-4b61-b8e6-da66002a6fb4
   framebufferDepthMemorylessMode: 0
