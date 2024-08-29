@@ -10,9 +10,9 @@ public class Bullet : MonoBehaviour
     //untuk kecepatan peluru
     void Start()
     {
-        moveSpeed = 10f;
-        rigidbody = GetComponent<Rigidbody>();
+       // moveSpeed = 10f;
+        //rigidbody = GetComponent<Rigidbody>();
 
-        rigidbody.velocity = Vector3.forward * moveSpeed;
+        //rigidbody.velocity = Vector3.forward * moveSpeed;
     }    
 }

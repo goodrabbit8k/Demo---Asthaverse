@@ -22,6 +22,7 @@ public class PlayerAction : ExecuteLogic
         inputActions.InputPlayerAction.Shooting.performed += Shooting_Performed;
     }
 
+
     //event ketika 'Shoot' dilakukan
     private void Shooting_Performed(InputAction.CallbackContext context)
     {
@@ -31,5 +32,7 @@ public class PlayerAction : ExecuteLogic
         }
         
     }    
+
+    
     
 }
