@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rigidbody;
-    [SerializeField] private float moveSpeed;
-
-    //untuk kecepatan peluru
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-       // moveSpeed = 10f;
-        //rigidbody = GetComponent<Rigidbody>();
-
-        //rigidbody.velocity = Vector3.forward * moveSpeed;
-    }    
+        //menghancurkan peluru ketika bertabrakan dengan benda yang mempunyai tag selain "Weapon"
+        if(collision.gameObject.tag != "Weapon")
+        {
+            Destroy(gameObject);
+        }
+        
+    }
 }

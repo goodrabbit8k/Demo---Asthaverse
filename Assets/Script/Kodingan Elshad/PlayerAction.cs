@@ -14,23 +14,34 @@ public class PlayerAction : ExecuteLogic
     {
         inputActions = new PlayerActionInput();
         inputActions.InputPlayerAction.Shooting.Enable();
+        inputActions.InputPlayerAction.SilentKill.Enable();
+        inputActions.InputPlayerAction.ChangingWeapon.Enable();
     }
 
     private void Start()
     {
-        //membuat event untuk menjalankan 'Shoot'
+        //membuat event untuk menjalankan aksi yang dipakai oleh player
         inputActions.InputPlayerAction.Shooting.performed += Shooting_Performed;
+        inputActions.InputPlayerAction.SilentKill.performed += SilentKill_performed;
+        inputActions.InputPlayerAction.ChangingWeapon.performed += ChangingWeapon_performed;
+    }
+
+    private void ChangingWeapon_performed(InputAction.CallbackContext context)
+    {
+        ChangingWeapon();
+    }
+
+    //event ketika 'SilentKill' dilakukan
+    private void SilentKill_performed(InputAction.CallbackContext context)
+    {
+        SilentKill();
     }
 
 
     //event ketika 'Shoot' dilakukan
     private void Shooting_Performed(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
-            Shoot();
-        }
-        
+        Shoot(this.gameObject);        
     }    
 
     

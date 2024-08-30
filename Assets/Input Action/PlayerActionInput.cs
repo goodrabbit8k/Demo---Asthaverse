@@ -35,6 +35,24 @@ public partial class @PlayerActionInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SilentKill"",
+                    ""type"": ""Button"",
+                    ""id"": ""7bdecdc9-0fd9-456e-8d18-b74c23c791e7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangingWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""00348e2f-2196-4c42-a40d-c98ec9b89632"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +66,28 @@ public partial class @PlayerActionInput: IInputActionCollection2, IDisposable
                     ""action"": ""Shooting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce50390c-ee25-4867-8064-458229c96c72"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SilentKill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1c05c04-dee4-44f3-9329-624685e571ec"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangingWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +97,8 @@ public partial class @PlayerActionInput: IInputActionCollection2, IDisposable
         // InputPlayerAction
         m_InputPlayerAction = asset.FindActionMap("InputPlayerAction", throwIfNotFound: true);
         m_InputPlayerAction_Shooting = m_InputPlayerAction.FindAction("Shooting", throwIfNotFound: true);
+        m_InputPlayerAction_SilentKill = m_InputPlayerAction.FindAction("SilentKill", throwIfNotFound: true);
+        m_InputPlayerAction_ChangingWeapon = m_InputPlayerAction.FindAction("ChangingWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +161,15 @@ public partial class @PlayerActionInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_InputPlayerAction;
     private List<IInputPlayerActionActions> m_InputPlayerActionActionsCallbackInterfaces = new List<IInputPlayerActionActions>();
     private readonly InputAction m_InputPlayerAction_Shooting;
+    private readonly InputAction m_InputPlayerAction_SilentKill;
+    private readonly InputAction m_InputPlayerAction_ChangingWeapon;
     public struct InputPlayerActionActions
     {
         private @PlayerActionInput m_Wrapper;
         public InputPlayerActionActions(@PlayerActionInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shooting => m_Wrapper.m_InputPlayerAction_Shooting;
+        public InputAction @SilentKill => m_Wrapper.m_InputPlayerAction_SilentKill;
+        public InputAction @ChangingWeapon => m_Wrapper.m_InputPlayerAction_ChangingWeapon;
         public InputActionMap Get() { return m_Wrapper.m_InputPlayerAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +182,12 @@ public partial class @PlayerActionInput: IInputActionCollection2, IDisposable
             @Shooting.started += instance.OnShooting;
             @Shooting.performed += instance.OnShooting;
             @Shooting.canceled += instance.OnShooting;
+            @SilentKill.started += instance.OnSilentKill;
+            @SilentKill.performed += instance.OnSilentKill;
+            @SilentKill.canceled += instance.OnSilentKill;
+            @ChangingWeapon.started += instance.OnChangingWeapon;
+            @ChangingWeapon.performed += instance.OnChangingWeapon;
+            @ChangingWeapon.canceled += instance.OnChangingWeapon;
         }
 
         private void UnregisterCallbacks(IInputPlayerActionActions instance)
@@ -143,6 +195,12 @@ public partial class @PlayerActionInput: IInputActionCollection2, IDisposable
             @Shooting.started -= instance.OnShooting;
             @Shooting.performed -= instance.OnShooting;
             @Shooting.canceled -= instance.OnShooting;
+            @SilentKill.started -= instance.OnSilentKill;
+            @SilentKill.performed -= instance.OnSilentKill;
+            @SilentKill.canceled -= instance.OnSilentKill;
+            @ChangingWeapon.started -= instance.OnChangingWeapon;
+            @ChangingWeapon.performed -= instance.OnChangingWeapon;
+            @ChangingWeapon.canceled -= instance.OnChangingWeapon;
         }
 
         public void RemoveCallbacks(IInputPlayerActionActions instance)
@@ -163,5 +221,7 @@ public partial class @PlayerActionInput: IInputActionCollection2, IDisposable
     public interface IInputPlayerActionActions
     {
         void OnShooting(InputAction.CallbackContext context);
+        void OnSilentKill(InputAction.CallbackContext context);
+        void OnChangingWeapon(InputAction.CallbackContext context);
     }
 }

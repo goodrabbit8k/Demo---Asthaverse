@@ -7,15 +7,27 @@ using UnityEngine;
  * Public class nya extend ke class ini
  * Jangan ke MonoBehaviour
  */
-public class ExecuteLogic : MonoBehaviour
+public class ExecuteLogic : WeaponType
 {
 
+    //setelah di extend, klean bisa make function ini tanpa perlu refrence
+
     //logic 'Shoot'
-    //setelah di extend, klean bisa make function ini tanpa perlu declare
-    public void Shoot()
-    {        
-        SpawnBullet bullet = GetComponentInChildren<SpawnBullet>();
-        bullet.SpawningBullet();
+    public void Shoot(GameObject gameObject)
+    {
+        ExecuteShooting(gameObject);
+    }    
+
+    public void ChangingWeapon()
+    {
+        Debug.Log("WeaponChanged");
+    }
+
+    //logic 'SilentKill'
+    public void SilentKill()
+    {
+        SilentKill silentKill = GetComponentInChildren<SilentKill>();
+        silentKill.canKill = true;
     }
 
 }

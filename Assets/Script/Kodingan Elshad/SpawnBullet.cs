@@ -6,7 +6,7 @@ public class SpawnBullet : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject bulletSpawnPosition;
-    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float moveSpeed;
 
     //spawning 'bullet'
     public void SpawningBullet()
@@ -14,10 +14,6 @@ public class SpawnBullet : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, bulletSpawnPosition.transform.position, bulletSpawnPosition.transform.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPosition.transform.forward * moveSpeed;
     }
-    
-    public Vector3 GetForwardForBullet()
-    {
-        return bulletSpawnPosition.transform.forward;
-    }
+   
 
 }
